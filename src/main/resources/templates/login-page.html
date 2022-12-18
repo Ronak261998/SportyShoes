@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+			integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+			crossorigin="anonymous">
+	<style>
+		form {
+			margin-left: 30%;
+			margin-right: 30%;
+			padding: 3%;
+			margin-top:10%;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+  				transition: 0.3s;
+ 				min-width: 35%;
+  				border-radius: 5px;
+		}
+		form:hover {
+  				cursor: pointer;
+  				box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 1);
+			}
+		input {
+			margin-left:35%;
+		}
+		
+		h3 {
+			text-align: center;
+		}
+		
+		.button {
+			margin-left: 62%;
+		}
+		
+	</style>
+</head>
+<body>
+	<div th:replace="../static/index :: index"></div>
+		<div class="container">
+			<form class="card form-horizontal" style="padding-top:2%" th:object="${loginForm}" th:action="@{/userLogin}" method="POST">
+				<h3>Add New User</h3>
+				<hr />
+				<label class="col-sm-4 col-form-label">E-mail: </label>
+				<div class="form-group  col-sm-8">
+				<input type="email" th:field="*{email}" class="form-control mb-4" placeholder="Enter your email" />
+				</div>
+				<div class="form-group col-sm-8">
+				<input type="text" th:field="*{password}" class="form-control mb-4" placeholder="Enter your Password" />
+				</div><br>
+				<button type="submit" class="btn btn-primary col-2 button">Login</button><br>
+				
+				<span>Not Registered ? <a th:href="@{/register}">Register/SignUp here</a></span>
+				<input type="hidden" th:field="*{id}" /><br>
+				<a th:href="@{/users}">Signed Users</a>
+			</form>
+			
+		</div>
+</body>
+</html>

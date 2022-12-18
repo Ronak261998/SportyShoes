@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Add new Product</title>
+		<link rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+			integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+			crossorigin="anonymous">
+		<style>
+			form {
+				margin-left: 30%;
+				margin-right: 30%;
+				padding: 3%;
+				margin-top:10%;
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+   				transition: 0.3s;
+  				min-width: 35%;
+   				border-radius: 5px;
+			}
+			form:hover {
+   				cursor: pointer;
+   				box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 1);
+ 			}
+			input {
+				margin-left:10%;
+			}
+			
+			h3 {
+				text-align: center;
+			}
+			
+			.button {
+				margin-left: 64%;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div th:replace="../static/index :: index"></div>
+		<div class="container">
+			<form class="card form-horizontal" style="padding-top:2%" th:action="@{/saveProduct}" th:object="${product}"
+				method="POST">
+				<h3>Add New Product</h3>
+				<hr />
+				<label class="col-sm-3">ProductName: </label>
+				<div class="form-group  col-sm-8">
+				<input type="text" th:field="*{name}" class="form-control mb-4" placeholder="Enter the Product" />
+				</div>
+				<label class="col-sm-3">Category: </label>
+				<div class="form-group col-sm-8">
+				<input type="text" th:field="*{category}" class="form-control mb-4" placeholder="Enter Category" />
+				</div>
+				<label class="col-sm-3">Price: </label>
+				<div class="form-group col-sm-8">
+				<input type="number" th:field="*{price}" class="form-control mb-4" placeholder="Enter Price" />
+				</div><br>
+				<button type="submit" class="btn btn-primary col-2 button">Add Product</button>
+				<input type="hidden" th:field="*{id}" /><br>
+				<a th:href="@{/allProducts}">Back to Products List</a>
+			</form>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+			integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+			crossorigin="anonymous">
+<title>All Users</title>
+<style>
+.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+</style>
+</head>
+<body>
+	<div th:replace="../static/index :: index"></div>
+	<div class="container">
+		<h3 style="margin-top:8%;margin-left:13%">List of Users</h3>
+		<hr />
+		<table class="table table-bordered table-striped center"
+			style="width: 80%">
+			<thead>
+				<tr style="text-align: center;vertical-align: middle">
+					<th>FirstName</th>
+					<th>LastName</th>
+					<th>Email Id</th>
+					<th colspan=2 width="30%">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr  th:each="user: ${users}">
+					<td th:text="${user.firstName}" />
+					<td th:text="${user.lastName}" />
+					<td th:text="${user.email}" />
+					<td><a th:href="@{/updateUser(id=${user.id})}"
+						class="btn btn-info">Update</a></td>
+					<td><a th:href="@{/deleteUser(id=${user.id})}"
+						class="btn btn-info">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

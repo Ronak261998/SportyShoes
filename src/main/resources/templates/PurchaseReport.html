@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Purchase Report</title>
+<link rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+			integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+			crossorigin="anonymous">
+
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+	integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
+	integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+	form,table{
+	 margin-top:2%;
+	}
+	</style>
+</head>
+<body>
+	<div th:replace="../static/index :: index"></div>
+	<div class="container mt-5">
+		<h3 align="center">Purchase Report</h3>
+		<form class="form-inline" th:action="@{/search}" method="get">
+		  <div class="form-group col-sm-3">
+			<input class="form-control" type="text" name="keyword" th:value="${keyword}"
+				placeholder="Find by category or date" size="30">
+		  </div>
+			<button type="submit" class="btn btn-info">Search</button>
+			<button type="reset" class="btn btn-info">Reset</button>
+			
+		</form>
+		<table class="table table-bordered table-sm" style="margin-left:12px">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Product Name</th>
+					<th>Category</th>
+					<th>Price</th>
+					<th>Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="l : ${report}">
+					<td th:text="${lStat.index+1}"></td>
+					<td th:text="${l.product_name}"></td>
+					<td th:text="${l.category}"></td>
+					<td th:text="${l.price}"></td>
+					<td th:text="${l.date}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
